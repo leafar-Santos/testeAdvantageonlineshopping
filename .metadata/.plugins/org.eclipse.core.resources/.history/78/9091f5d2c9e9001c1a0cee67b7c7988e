@@ -1,0 +1,51 @@
+package Cadastro;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Cadastro {
+
+	
+	/*
+	@Test
+	public void Cadastro() {
+	 
+	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Rafael\\Documents\\TesteFuncionalAdvantageOlineShopping\\TesteFuncionalAdvantageShopping\\src\\test\\resources\\chromedriver.exe");
+	
+	WebDriver driver = new ChromeDriver();
+	driver.get("https://advantageonlineshopping.com/#/");
+	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	driver.findElement(By.id("menuUser")).click();
+	driver.quit();
+}
+	*/
+	
+	@Test
+	public void clicaCadastro() {
+	 
+	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Rafael\\Documents\\TesteFuncionalAdvantageOlineShopping\\TesteFuncionalAdvantageShopping\\src\\test\\resources\\chromedriver.exe");
+	
+	WebDriver driver = new ChromeDriver();
+	driver.get("https://advantageonlineshopping.com/#/");
+	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	driver.findElement(By.id("menuUser")).click();
+
+	System.out.println(driver.getWindowHandle());
+	System.out.println(driver.getWindowHandles());
+
+	driver.switchTo().window(driver.getWindowHandles().toArray()[0]);
+	driver.findElement(By.xpath("xpath=//a[contains(text(),'CREATE NEW ACCOUNT')]")).click();
+	driver.quit();
+}
+	
+	
+	
+}

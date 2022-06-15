@@ -1,0 +1,37 @@
+package br.com.southrocklab.utils;
+
+import java.util.Random;
+
+public class NumbersUtils {
+	
+		public static String numeroCartao(){
+		    Random rand = new Random();
+		    long randomNum = rand.nextLong();
+		    String num = Long.toString(randomNum);
+		   return num.substring(1,17);
+		}
+		
+		public static String numeroCartaoQuinzeDigitos(){
+		    Random rand = new Random();
+		    long randomNum = rand.nextLong();
+		    String num = Long.toString(randomNum);
+		   return num.substring(1,17);
+		}
+	
+		
+		public static String numeroCVC(){
+		    Random rand = new Random();
+		    int randomNum = rand.nextInt();
+		    String num = Integer.toString(randomNum);
+		   return num.substring(2,5);
+		}
+		
+
+		public static String numeroNome(){
+		    Random rand = new Random();
+		    int randomNum = rand.nextInt();
+		    String num = Integer.toString(randomNum);
+		   return num.substring(1,10);
+		}
+			
+}

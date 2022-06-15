@@ -1,0 +1,110 @@
+package br.com.southrocklab.resources;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import br.com.southrocklab.model.CardTest;
+import br.com.southrocklab.testes.BaseTest;
+import br.com.southrocklab.utils.DataUtils;
+import br.com.southrocklab.utils.NumbersUtils;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class CardResourceTest extends BaseTest {
+
+
+	 private static String HOLDER_NAME = "Rafael" + NumbersUtils.numeroNome();
+	 private static String BRAND = "MASTER";
+	 private static Integer CUSTOMER_CUSTOMER_ID = 1;
+	 private static String CUSTOMER_CVC = NumbersUtils.numeroCVC();
+	 private static String CUSTOMER_YEAR = DataUtils.getYear(1);
+	 private static String CUSTOMER_MONTH = DataUtils.getMonth(0);
+	 private static String NUMBER_CARD = NumbersUtils.numeroCartao();;
+	
+    @Test
+    public void deve_salvar_novo_card_no_sistema() {
+    	
+     CardTest card = new CardTest();
+    	card.setBrand(BRAND);
+    	card.setCustomerId(CUSTOMER_CUSTOMER_ID);
+    	card.setCvc(CUSTOMER_CVC);
+    	card.setExpirationYear(CUSTOMER_YEAR);
+    	card.setExpirationMoth(CUSTOMER_MONTH);
+    	card.setHolderName(HOLDER_NAME);
+    	card.setNumber(NUMBER_CARD);
+     	given()
+		.when()
+		.body(card)
+		
+		.post("/card")
+		.then()
+		.statusCode(200)
+     	.body("customerId",is(CUSTOMER_CUSTOMER_ID))
+		.body("number", is(NUMBER_CARD))
+		.body("holderName", is(HOLDER_NAME))
+		.body("brand", is(BRAND))
+	    .body("expirationMoth",is(CUSTOMER_MONTH))
+		.body("expirationYear",is(notNullValue()))
+		.body("cvc",is(CUSTOMER_CVC))
+		.body("id", is(notNullValue()))
+    	.extract().path("id");
+  
+    }
+    
+    
+    @Test
+    public void deve_retornar_status_400_quando_salvar_card_com_cvv_maior_que_999() {
+    	
+    	CardTest card = new CardTest();
+    	card.setBrand(BRAND);
+    	card.setCustomerId(CUSTOMER_CUSTOMER_ID);
+    	card.setCvc("1000");
+    	card.setExpirationYear(CUSTOMER_YEAR);
+    	card.setExpirationMoth(CUSTOMER_MONTH);
+    	card.setHolderName(HOLDER_NAME);
+    	card.setNumber(NUMBER_CARD);
+     	given()
+		.when()
+		.body(card)
+		
+		.post("/card")
+		.then()
+		.statusCode(400)
+     	.body("customerId",is(CUSTOMER_CUSTOMER_ID))
+		.body("number", is(NUMBER_CARD))
+		.body("holderName", is(HOLDER_NAME))
+		.body("brand", is(BRAND))
+	    .body("expirationMoth",is(CUSTOMER_MONTH))
+		.body("expirationYear",is(notNullValue()))
+		.body("cvc",is(CUSTOMER_CVC))
+		.body("id", is(notNullValue()))
+    	.extract().path("id");
+  
+    }
+    }
+
+    @Test
+    public void deve_retornar_status_400_quando_salvar_card_com_expiration_month_maior_que_12() {
+    }
+
+    @Test
+    public void deve_retornar_status_400_quando_salvar_card_com_expiration_year_menor_que_2022() {
+    }
+    
+
+    @Test
+    public void deve_retornar_status_400_quando_salvar_card_com_number_de_15_digitos() {
+    }
+
+    @Test
+    public void deve_deletar_um_card_salvo_no_sistema() {
+    }
+
+    @Test
+    public void deve_retornar_status_404_ao_deletar_um_card_com_id_nao_salvo_no_sistema() {
+    }
+}

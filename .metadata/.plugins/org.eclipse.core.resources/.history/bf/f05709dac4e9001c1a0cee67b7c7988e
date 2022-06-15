@@ -1,0 +1,39 @@
+package Cadastro;
+
+import org.junit.Assert;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Cadastro {
+
+
+	@Test
+	public void teste() {
+	 
+	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Rafael\\Documents\\TesteFuncionalAdvantageOlineShopping\\TesteFuncionalAdvantageShopping\\src\\test\\resources\\chromedriver.exe");
+	
+	WebDriver driver = new ChromeDriver();
+	driver.get("https://advantageonlineshopping.com/#/");
+	System.out.println(driver.getTitle());
+	Assert.assertEquals("Advantage Shopping", driver.getTitle());
+	driver.quit();
+}
+	
+	
+	@Test
+	public void Cadastro() {
+	 
+	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Rafael\\Documents\\TesteFuncionalAdvantageOlineShopping\\TesteFuncionalAdvantageShopping\\src\\test\\resources\\chromedriver.exe");
+	
+	WebDriver driver = new ChromeDriver();
+	driver.get("https://advantageonlineshopping.com/#/");
+
+	//driver.findElement(By.id("id=menuUser")).click();
+	driver.findElement(By.cssSelector("css=#menuUser")).click();
+	driver.quit();
+}
+	
+	
+}

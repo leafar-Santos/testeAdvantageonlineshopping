@@ -1,0 +1,95 @@
+package cadastro;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import dsl.DSL;
+import pages.CadastroPage;
+
+public class TesteCadastro {
+
+	private WebDriver driver;
+	private DSL dsl;
+	private CadastroPage page;
+
+	@Before
+	public void iniciliza() {
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\Rafael\\Documents\\TesteFuncionalAdvantageOlineShopping\\TesteFuncionalAdvantageShopping\\src\\test\\resources\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.get("https://advantageonlineshopping.com/#/");
+		dsl = new DSL(driver);
+		page = new CadastroPage(driver);
+	}
+
+	@After
+	public void finaliaza() {
+		//driver.quit();
+	}
+
+	public void waitPage(int tempo) {
+		driver.manage().timeouts().implicitlyWait(tempo, TimeUnit.SECONDS);
+	}
+
+
+	@Test
+	public void clicaCadastroCompleto() {
+		waitPage(2000);
+		dsl.clicaByid("menuUser");
+
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		dsl.clicaByLink("CREATE NEW ACCOUNT");
+		dsl.mudaPagina(0);
+
+		page.setUserName("Raaul91");
+		Assert.assertEquals("Raaul91", dsl.obterValorCampoByname("usernameRegisterPage"));
+
+		page.setUserEmail("leafar@gmail.com");
+		Assert.assertEquals("leafar@gmail.com", dsl.obterValorCampoByname("emailRegisterPage"));
+
+		page.setPassword("b1107C@rol");
+		Assert.assertEquals("b1107C@rol", dsl.obterValorCampoByname("passwordRegisterPage"));
+		
+		page.setConfirmPassword("b1107C@rol");
+		Assert.assertEquals("b1107C@rol", dsl.obterValorCampoByname("confirm_passwordRegisterPage"));
+
+		page.setFirstName("Rafael");
+		Assert.assertEquals("Rafael", dsl.obterValorCampoByname("first_nameRegisterPage"));
+
+		page.setLastName("Santos");
+		Assert.assertEquals("Santos", dsl.obterValorCampoByname("last_nameRegisterPage"));
+
+		page.setPhone("11987654321");
+		Assert.assertEquals("11987654321", dsl.obterValorCampoByname("phone_numberRegisterPage"));
+
+		page.setCity("São Paulo");
+		Assert.assertEquals("São Paulo", dsl.obterValorCampoByname("cityRegisterPage"));
+
+		page.setStreet("Rua 01");
+		Assert.assertEquals("Rua 01", dsl.obterValorCampoByname("addressRegisterPage"));
+
+		page.setState("São Paulo");
+		Assert.assertEquals("São Paulo", dsl.obterValorCampoByname("state_/_province_/_regionRegisterPage"));
+
+		page.setCep("02987090");
+		Assert.assertEquals("02987090", dsl.obterValorCampoByname("postal_codeRegisterPage"));
+
+		page.selecionaOpcao();
+		Assert.assertTrue(dsl.selecionadoByName("i_agree"));
+		
+		page.clicaCadastro();
+	
+	}
+
+}

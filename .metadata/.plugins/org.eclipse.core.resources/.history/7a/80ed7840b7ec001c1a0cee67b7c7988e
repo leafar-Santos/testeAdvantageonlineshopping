@@ -1,0 +1,15 @@
+package br.com.southrocklab.utils;
+
+import java.util.Random;
+
+public class NumbersUtils {
+
+	 static Random random = new Random();
+	public static void main(String[] args) {
+		Long numeroInteiroAleatorio_0_a_10 = random.nextLong(1234567891234567l);
+	    System.out.println("Número inteiro aleatório de 0 até 10:" + numeroInteiroAleatorio_0_a_10);
+	}
+	
+
+	
+}

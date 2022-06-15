@@ -1,0 +1,13 @@
+package dsl;
+
+import org.openqa.selenium.By;
+
+public class Dsl {
+
+	
+	public void escreve() {
+		driver.findElement(By.name("usernameRegisterPage")).sendKeys("Raaul91");
+	}
+
+	
+}

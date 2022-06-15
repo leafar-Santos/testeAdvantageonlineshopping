@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun br.com.southrocklab.resources.CustomerResourceTest" project="qa-test" tests="12" started="12" failures="1" errors="0" ignored="0">
+  <testsuite name="br.com.southrocklab.resources.CustomerResourceTest" time="2.393">
+    <testcase name="t01_deve_salvar_novo_customer_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="1.936"/>
+    <testcase name="t02_deve_validar_campos_Obrigatorios" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.068"/>
+    <testcase name="t03_deve_retornar_status_400_quando_salvar_customer_ja_salvo" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.03"/>
+    <testcase name="t04_deve_retornar_status_400_quando_salvar_customer_com_birth_date_maior_que_hoje" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.08">
+      <failure>java.lang.AssertionError: 1 expectation failed.
+JSON path birthDate doesn't match.
+Expected: is "Birth date must be smaller than today"
+  Actual: Birth date cannot be null
+&#13;
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)&#13;
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)&#13;
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:72)&#13;
+	at org.codehaus.groovy.reflection.CachedConstructor.doConstructorInvoke(CachedConstructor.java:59)&#13;
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrap.callConstructor(ConstructorSite.java:84)&#13;
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallConstructor(CallSiteArray.java:59)&#13;
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:263)&#13;
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)&#13;
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure.validate(ResponseSpecificationImpl.groovy:493)&#13;
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure$validate$1.call(Unknown Source)&#13;
+	at io.restassured.internal.ResponseSpecificationImpl.validateResponseIfRequired(ResponseSpecificationImpl.groovy:674)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)&#13;
+	at org.codehaus.groovy.runtime.callsite.PlainObjectMetaMethodSite.doInvoke(PlainObjectMetaMethodSite.java:43)&#13;
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:193)&#13;
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:61)&#13;
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:185)&#13;
+	at io.restassured.internal.ResponseSpecificationImpl.body(ResponseSpecificationImpl.groovy:261)&#13;
+	at io.restassured.specification.ResponseSpecification$body$5.callCurrent(Unknown Source)&#13;
+	at io.restassured.internal.ResponseSpecificationImpl.body(ResponseSpecificationImpl.groovy:108)&#13;
+	at io.restassured.internal.ValidatableResponseOptionsImpl.body(ValidatableResponseOptionsImpl.java:244)&#13;
+	at io.restassured.internal.ValidatableResponseImpl.super$2$body(ValidatableResponseImpl.groovy)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)&#13;
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)&#13;
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)&#13;
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1268)&#13;
+	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.invokeMethodOnSuperN(ScriptBytecodeAdapter.java:144)&#13;
+	at io.restassured.internal.ValidatableResponseImpl.body(ValidatableResponseImpl.groovy:298)&#13;
+	at io.restassured.internal.ValidatableResponseImpl.body(ValidatableResponseImpl.groovy)&#13;
+	at br.com.southrocklab.resources.CustomerResourceTest.t04_deve_retornar_status_400_quando_salvar_customer_com_birth_date_maior_que_hoje(CustomerResourceTest.java:94)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)&#13;
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+&#13;
+</failure>
+    </testcase>
+    <testcase name="t05_deve_procurar_customer_pelo_name_e_last_name" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.077"/>
+    <testcase name="t06_deve_retornar_status_404_quando_buscar_customer_por_last_name_inexistente" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.034"/>
+    <testcase name="t07_deve_retornar_status_404_quando_buscar_customer_por_name_inexistente" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.031"/>
+    <testcase name="t08_deve_retornar_status_404_quando_buscar_customer_last_name_inexistente" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.037"/>
+    <testcase name="t09_deve_atualizar_o_last_name_de_um_customer" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.033"/>
+    <testcase name="t10_deve_deletar_um_customer_salvo_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.022"/>
+    <testcase name="t11_deve_retornar_status_404_ao_atualizar_um_customer_com_id_nao_salvo_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.026"/>
+    <testcase name="t12_deve_retornar_status_404_ao_deletar_um_customer_com_id_nao_salvo_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.018"/>
+  </testsuite>
+</testrun>

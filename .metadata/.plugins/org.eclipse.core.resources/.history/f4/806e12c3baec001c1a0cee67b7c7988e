@@ -1,0 +1,87 @@
+package br.com.southrocklab.resources;
+
+import org.junit.Test;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.assertj.core.internal.Numbers;
+import org.hamcrest.Matchers;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import br.com.southrocklab.model.Card;
+import br.com.southrocklab.model.CardTest;
+import br.com.southrocklab.testes.BaseTest;
+import br.com.southrocklab.utils.DataUtils;
+import br.com.southrocklab.utils.NumbersUtils;
+import br.com.southrocklab.testes.BaseTest;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class CardResourceTest extends BaseTest {
+
+	
+	
+	
+	 private static String CARD_MASTER = NumbersUtils.numeroCartao();
+	 private static Integer CUSTOMER_CUSTOMER_ID = 1;
+	 private static String CUSTOMER_CVC = "123";
+	 private static String CUSTMER_YEAR = DataUtils.getYear(1);
+	 private static String CUSTMER_MONTH = DataUtils.getMonth(1);
+	 private static String NUMBER = "1234567891234567";
+	
+    @Test
+    public void deve_salvar_novo_card_no_sistema() {
+    	
+     CardTest card = new CardTest();
+    	card.setBrand("MASTER");
+    	card.setCustomerId(CUSTOMER_CUSTOMER_ID);
+    	card.setCvc(CUSTOMER_CVC);
+    	card.setExpirationYear(CUSTMER_YEAR);
+    	card.setExpirationMoth(CUSTMER_MONTH);
+    	card.setHolderName("Rafael");
+    	card.setNumber(NUMBER);
+     	given()
+		.when()
+		.body(card)
+		
+		.post("/card")
+		.then()
+		.statusCode(200);
+		//.body("lastName", is("Last name cannot be empty"))
+		//.body("name", is("Name cannot be empty"))
+		//.body("birthDate", is("Birth date cannot be null"));
+    }
+    
+    
+   
+
+    @Test
+    public void deve_retornar_status_400_quando_salvar_card_com_cvv_maior_que_999() {
+    }
+
+    @Test
+    public void deve_retornar_status_400_quando_salvar_card_com_expiration_month_maior_que_12() {
+    }
+
+    @Test
+    public void deve_retornar_status_400_quando_salvar_card_com_expiration_year_menor_que_2022() {
+    }
+    
+
+    @Test
+    public void deve_retornar_status_400_quando_salvar_card_com_number_de_15_digitos() {
+    }
+
+    @Test
+    public void deve_deletar_um_card_salvo_no_sistema() {
+    }
+
+    @Test
+    public void deve_retornar_status_404_ao_deletar_um_card_com_id_nao_salvo_no_sistema() {
+    }
+}

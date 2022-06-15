@@ -1,0 +1,94 @@
+package cadastr;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import br.com.advantageshopping.pages.CadastroPage;
+import dsl.DSL;
+import until.DriverFactory;
+
+public class TesteCadastro {
+
+
+	private DSL dsl;
+	private CadastroPage page;
+	DriverFactory facDriver;
+	private CadastroPage pagina;
+
+	@Before
+	public void iniciliza() {
+		DriverFactory.getDriver();
+		dsl = new DSL(DriverFactory.getDriver());
+		page = new CadastroPage(DriverFactory.getDriver());
+	}
+
+	@After
+	public void finaliaza() {
+		DriverFactory.killDriver();
+	}
+
+	public void waitPage(int tempo) {
+		facDriver.getDriver().manage().timeouts().implicitlyWait(tempo, TimeUnit.SECONDS);
+	}
+
+	@Test
+	public void clicaCadastroCompleto() {
+		waitPage(2000);
+		dsl.clicaByid("menuUser");
+
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		dsl.clicaByLink("CREATE NEW ACCOUNT");
+		dsl.mudaPagina(0);
+
+		page.setUserName("Raaul92");
+		Assert.assertEquals("Raaul92", page.ObterUserNome());
+
+		page.setUserEmail("leafar@gmail.com");
+		Assert.assertEquals("leafar@gmail.com", page.getEmail());
+
+		page.setPassword("b1107C@rol");
+		Assert.assertEquals("b1107C@rol", dsl.obterValorCampoByname("passwordRegisterPage"));
+		
+		page.setConfirmPassword("b1107C@rol");
+		Assert.assertEquals("b1107C@rol", page.getConfirmPassword());
+
+		page.setFirstName("Rafael");
+		Assert.assertEquals("Rafael", page.getFirstname());
+
+		page.setLastName("Santos");
+		Assert.assertEquals("Santos", page.getLastName());
+
+		page.setPhone("11987654321");
+		Assert.assertEquals("11987654321", page.getPhone());
+
+		page.setCity("São Paulo");
+		Assert.assertEquals("São Paulo", page.getCity());
+
+		page.setStreet("Rua 01");
+		Assert.assertEquals("Rua 01", page.getStreet());
+
+		page.setState("São Paulo");
+		Assert.assertEquals("São Paulo", page.getState());
+
+		page.setCep("02987090");
+		Assert.assertEquals("02987090", page.getCep());
+
+		page.selecionaOpcaoAgree();
+		Assert.assertTrue(page.getStatusAgree());
+		
+		page.clicaBotaoCadastro();
+	
+	}
+
+}

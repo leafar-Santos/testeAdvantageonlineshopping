@@ -1,0 +1,54 @@
+package br.com.southrocklab.utils;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+public class DataUtils {
+
+	public static String getData(Integer qnt) {
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.DAY_OF_MONTH, qnt);
+		return getDataFormatada(cal.getTime());		
+	}
+	
+		
+	public static String getDataFormatada(Date data) {
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		return format.format(data);
+		
+	}
+	
+	static Date date = new Date();
+	static LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+	
+	
+	public static String getYear(int year) {
+		int ano = localDate.getYear() + year;
+		return Integer.toString(ano);
+	}
+	
+	public static String getMonth(int month) {
+		int ano = localDate.getMonthValue()+ month;
+		return Integer.toString(ano);
+	}
+	
+	
+	
+	public static void main(String[] args) {			
+		System.out.println(getYear(1));
+		System.out.println(getMonth(1));
+	}
+	
+
+
+
+
+
+	
+}

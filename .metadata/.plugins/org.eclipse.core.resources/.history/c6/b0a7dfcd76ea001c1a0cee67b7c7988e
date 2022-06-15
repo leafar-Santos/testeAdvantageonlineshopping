@@ -1,0 +1,27 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+
+import dsl.DSL;
+
+public class CadastroPage {
+
+	
+	private DSL dsl;
+	
+	public CadastroPage(WebDriver driver) {
+		dsl = new DSL(driver);
+	}
+	
+	
+	public void setUserName(String nome) {
+		dsl.escreveByName("usernameRegisterPage", nome);
+	}
+	
+	public void setUserEmail(String email) {
+		dsl.escreveByName("emailRegisterPage", email);
+	}
+	
+	
+	
+}

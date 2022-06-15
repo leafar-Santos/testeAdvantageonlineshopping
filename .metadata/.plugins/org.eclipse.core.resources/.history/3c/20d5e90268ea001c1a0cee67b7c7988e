@@ -1,0 +1,118 @@
+package Cadastro;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import dsl.DSL;
+
+public class Cadastro {
+
+	
+	/*
+	@Test
+	public void Cadastro() {
+	 
+	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Rafael\\Documents\\TesteFuncionalAdvantageOlineShopping\\TesteFuncionalAdvantageShopping\\src\\test\\resources\\chromedriver.exe");
+	
+	WebDriver driver = new ChromeDriver();
+	driver.get("https://advantageonlineshopping.com/#/");
+	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	driver.findElement(By.id("menuUser")).click();
+	driver.quit();
+}
+	*/
+	
+	private WebDriver driver;
+	private DSL dsl;
+
+	@Before
+	public void iniciliza() {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Rafael\\Documents\\TesteFuncionalAdvantageOlineShopping\\TesteFuncionalAdvantageShopping\\src\\test\\resources\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.get("https://advantageonlineshopping.com/#/");
+		dsl = new DSL(driver);
+		
+	}
+	
+	@After
+	public void finaliaza() {
+		driver.quit();
+	}
+	
+	public void waitPage(int tempo) {
+		driver.manage().timeouts().implicitlyWait(tempo, TimeUnit.SECONDS);
+	}
+	
+	@Test
+	public void clicaCadastro() {
+	waitPage(5000);
+	driver.findElement(By.id("menuUser")).click();
+	driver.findElement(By.linkText("CREATE NEW ACCOUNT")).click();
+
+}
+	
+	@Test
+	public void clicaCadastroCompleto() {
+	waitPage(2000);
+	driver.findElement(By.id("menuUser")).click();
+	
+	
+	try {
+		Thread.sleep(5000);
+	} catch (InterruptedException e) {
+		e.printStackTrace();
+	}
+	driver.findElement(By.linkText("CREATE NEW ACCOUNT")).click();
+	System.out.println(driver.getWindowHandles());
+	driver.switchTo().window((String) driver.getWindowHandles().toArray()[0]);
+	
+	//driver.findElement(By.cssSelector(".spliter:nth-child(2) > .ng-isolate-scope:nth-child(1) label:nth-child(4)")).click();
+	dsl.escreve("usernameRegisterPage", "Raaul91");
+   // driver.findElement(By.name("usernameRegisterPage")).sendKeys("Raaul91");
+    driver.findElement(By.name("emailRegisterPage")).click();
+    driver.findElement(By.name("emailRegisterPage")).sendKeys("leafar@gmail.com");
+    driver.findElement(By.cssSelector(".spliter:nth-child(3) > .ng-isolate-scope:nth-child(1) label:nth-child(4)")).click();
+    driver.findElement(By.name("passwordRegisterPage")).sendKeys("b1107C@rol");
+    driver.findElement(By.cssSelector(".spliter:nth-child(3) > .ng-isolate-scope:nth-child(2) label:nth-child(4)")).click();
+    driver.findElement(By.name("confirm_passwordRegisterPage")).sendKeys("b1107C@rol");
+    driver.findElement(By.cssSelector("div:nth-child(2) > .spliter:nth-child(2) > .ng-isolate-scope:nth-child(1) label")).click();
+    driver.findElement(By.name("first_nameRegisterPage")).sendKeys("Rafael");
+    driver.findElement(By.cssSelector("div:nth-child(2) > .spliter > .ng-isolate-scope:nth-child(2) label")).click();
+    driver.findElement(By.name("last_nameRegisterPage")).sendKeys("Santos");
+    driver.findElement(By.cssSelector("div:nth-child(2) > .spliter:nth-child(3) label")).click();
+    driver.findElement(By.name("phone_numberRegisterPage")).sendKeys("11987654321");
+    driver.findElement(By.name("countryListboxRegisterPage")).click();
+    
+    /*
+    {
+      WebElement dropdown = driver.findElement(By.name("countryListboxRegisterPage"));
+      dropdown.findElement(By.xpath("//option[. = 'Brazil']")).click();
+    }
+    
+    */
+    driver.findElement(By.name("cityRegisterPage")).click();
+    driver.findElement(By.name("cityRegisterPage")).sendKeys("São Paulo");
+    driver.findElement(By.cssSelector("div:nth-child(3) > .spliter:nth-child(3) > .ng-isolate-scope:nth-child(1) label")).click();
+    driver.findElement(By.name("addressRegisterPage")).sendKeys("Rua 01");
+    driver.findElement(By.cssSelector(".spliter:nth-child(3) > .ng-isolate-scope:nth-child(2) label:nth-child(3)")).click();
+    driver.findElement(By.name("state_/_province_/_regionRegisterPage")).sendKeys("São Paulo");
+    driver.findElement(By.cssSelector(".spliter:nth-child(4) label")).click();
+    driver.findElement(By.name("postal_codeRegisterPage")).sendKeys("02987090");
+    driver.findElement(By.name("i_agree")).click();
+    driver.findElement(By.id("register_btnundefined")).click();
+
+    driver.quit();
+}
+	
+	
+}

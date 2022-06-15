@@ -1,0 +1,5 @@
+package br.com.southrocklab.testes;
+
+public class BaseTest implements Constantes {
+
+}

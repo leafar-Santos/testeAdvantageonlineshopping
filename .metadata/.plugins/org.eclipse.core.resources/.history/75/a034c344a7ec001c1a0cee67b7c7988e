@@ -1,0 +1,5 @@
+package br.com.southrocklab.model;
+
+public class Card {
+
+}

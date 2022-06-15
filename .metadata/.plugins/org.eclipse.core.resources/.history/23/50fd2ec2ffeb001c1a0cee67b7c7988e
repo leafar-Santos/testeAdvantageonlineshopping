@@ -1,0 +1,7 @@
+package br.com.southrocklab.resources;
+
+import br.com.southrocklab.ApplicationTests;
+
+public class testeDoido extends ApplicationTests {
+
+}

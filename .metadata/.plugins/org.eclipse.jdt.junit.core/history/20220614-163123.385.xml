@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun br.com.southrocklab.resources.CustomerResourceTest" project="qa-test" tests="12" started="12" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.southrocklab.resources.CustomerResourceTest" time="2.487">
+    <testcase name="t01_deve_salvar_novo_customer_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="2.002"/>
+    <testcase name="t02_deve_validar_campos_Obrigatorios" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.085"/>
+    <testcase name="t03_deve_retornar_status_400_quando_salvar_customer_ja_salvo" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.044"/>
+    <testcase name="t04_deve_retornar_status_400_quando_salvar_customer_com_birth_date_maior_que_hoje" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.044"/>
+    <testcase name="t05_deve_procurar_customer_pelo_name_e_last_name" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.074"/>
+    <testcase name="t06_deve_retornar_status_404_quando_buscar_customer_por_last_name_inexistente" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.033"/>
+    <testcase name="t07_deve_retornar_status_404_quando_buscar_customer_por_name_inexistente" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.039"/>
+    <testcase name="t08_deve_retornar_status_404_quando_buscar_customer_last_name_inexistente" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.05"/>
+    <testcase name="t09_deve_atualizar_o_last_name_de_um_customer" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.051"/>
+    <testcase name="t10_deve_deletar_um_customer_salvo_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.023"/>
+    <testcase name="t11_deve_retornar_status_404_ao_atualizar_um_customer_com_id_nao_salvo_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.026"/>
+    <testcase name="t12_deve_retornar_status_404_ao_deletar_um_customer_com_id_nao_salvo_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.016"/>
+  </testsuite>
+</testrun>

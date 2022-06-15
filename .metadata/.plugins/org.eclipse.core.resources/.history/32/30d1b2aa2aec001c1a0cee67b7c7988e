@@ -1,0 +1,255 @@
+package br.com.southrocklab.resources;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.hamcrest.Matchers;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import br.com.southrocklab.testes.BaseTest;
+import br.com.southrocklab.utils.DataUtils;
+
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class CustomerResourceTest extends BaseTest {
+	
+	private static String CUSTOMER_FIRST_NAME = "Rafael" + System.nanoTime();
+	private static String CUSTOMER_LAST_NAME = "SANTOS" + System.nanoTime();
+	private static int CUSTOMER_ID;
+	private static String  DATA_TESTE = DataUtils.getData(-2); 
+	
+	public Map<String, String> dados_customer() {
+	Map<String, String>customer = new HashMap<>();
+	customer.put("birthDate",DATA_TESTE);
+	customer.put("lastName",CUSTOMER_LAST_NAME);
+	customer.put("name",CUSTOMER_FIRST_NAME);
+	return customer;
+	
+	}
+	
+	
+	//--Testes POST
+	
+	@Test
+	public void t01_deve_salvar_novo_customer_no_sistema() {
+	
+	CUSTOMER_ID = given()
+	.when()
+	.body(dados_customer())
+	.post("/customer")
+	.then()
+	.statusCode(200)
+	.body("name",is(CUSTOMER_FIRST_NAME))
+	.body("birthDate", is(DATA_TESTE))
+	.body("id", Matchers.is(notNullValue()))
+	.extract().path("id");
+	}
+	
+	@Test
+	public void t02_deve_validar_Todos_campos_obrigatorios() {
+		given()
+		.when()
+		.body("{}")
+		.post("/customer")
+		.then()
+		.statusCode(400)
+		.body("lastName", is("Last name cannot be empty"))
+		.body("name", is("Name cannot be empty"))
+		.body("birthDate", is("Birth date cannot be null"));
+	}
+	
+	
+	@Test
+	public void t03_deve_validar_campo_birthDate_obrigatorio() {
+		Map<String, String>customer = new HashMap<>();
+		customer.put("lastName",CUSTOMER_LAST_NAME);
+		customer.put("name",CUSTOMER_FIRST_NAME);
+		
+		given()
+		.when()
+		.body(customer)
+		.post("/customer")
+		.then()
+		.statusCode(400)
+		.body("birthDate", is("Birth date cannot be null"));
+	
+	}
+	
+	@Test
+	public void t04_deve_validar_campo_last_name_obrigatorio() {
+		Map<String, String>customer = new HashMap<>();
+		customer.put("birthDate",DATA_TESTE);
+		customer.put("name",CUSTOMER_FIRST_NAME);
+		
+		given()
+		.when()
+		.body(customer)
+		.post("/customer")
+		.then()
+		.statusCode(400)
+		.body("lastName", is("Last name cannot be empty"));
+	
+	}
+	
+	
+	@Test
+	public void t05_deve_validar_campo_name_obrigatorio() {
+		
+		Map<String, String>customer = new HashMap<>();
+		customer.put("birthDate",DATA_TESTE);
+		customer.put("lastName",CUSTOMER_LAST_NAME);		
+		given()
+		.when()
+		.body(customer)
+		.post("/customer")
+		.then()
+		.statusCode(400)
+		.body("name", is("Name cannot be empty"));
+	
+	}
+	
+	@Test
+	public void t06_deve_retornar_status_400_quando_salvar_customer_ja_salvo() {
+		
+		given()
+		.when()
+		.body(dados_customer())
+		.post("/customer")
+		.then()
+		.statusCode(400);
+	
+	}
+
+	@Test
+	public void t07_deve_retornar_status_400_quando_salvar_customer_com_birth_date_maior_que_hoje() {
+		
+		Map<String, String>customer = new HashMap<>();
+		customer.put("birthDate",DataUtils.getData(2));
+		customer.put("lastName","COSTUMER_LAST_NAME");
+		customer.put("name","COSTUMER_FIRST_NAME");
+	
+		given()
+		.when()
+	
+		.body(customer)
+	
+		.post("/customer")
+		.then()
+		.statusCode(400)
+		.body("birthDate", is("Birth date must be smaller than today"));
+	}
+
+	//----- Testes GET
+	
+	@Test
+	public void t08_deve_procurar_customer_pelo_name_e_last_name() {
+		given()
+		.when()
+		.get("customer/" + CUSTOMER_FIRST_NAME + "/" + CUSTOMER_LAST_NAME)
+		.then()
+		.statusCode(200)
+		.body("name", is(CUSTOMER_FIRST_NAME))
+		.body("lastName", is(CUSTOMER_LAST_NAME))
+		.body("birthDate", is(DATA_TESTE))
+		.body("id", is(CUSTOMER_ID));
+	}
+
+
+	@Test
+	public void t09_deve_retornar_status_404_quando_buscar_customer_por_last_name_inexistente() {
+		
+		given()
+		.when()
+		.get("customer/" + CUSTOMER_FIRST_NAME + "/" + "teste")
+		.then()
+		.statusCode(404)
+		.body("message", is("Customer not found"));
+	}
+
+	@Test
+	public void t10_deve_retornar_status_404_quando_buscar_customer_por_nome_inexistente() {
+		
+		given()
+		.when()
+		.get("customer/" + "GerundioGTO" + "/" + CUSTOMER_LAST_NAME)
+		.then()
+		.statusCode(404)
+		.body("message", is("Customer not found"));
+	}
+
+	@Test
+	public void t11_deve_retornar_status_404_quando_buscar_customer_name_e_last_name_inexistente() {
+		
+		given()
+		.when()
+		.get("customer/GerundioGTO/Ben10")
+		.then()
+		.statusCode(404)
+		.body("message", is("Customer not found"));
+	}
+	
+	
+	//----- Testes PUT
+	@Test
+	public void t12_deve_atualizar_o_last_name_de_um_customer() {
+		
+		Map<String, String>customer = new HashMap<>();
+		customer.put("birthDate",DATA_TESTE);
+		customer.put("lastName",CUSTOMER_LAST_NAME);
+		customer.put("name",CUSTOMER_FIRST_NAME);
+		given()
+		.pathParam("id", CUSTOMER_ID)
+		.when()
+		.body(customer)
+		.put("customer/{id}")
+		.then()
+		.statusCode(200);
+		
+	}
+
+
+	@Test
+	public void t13_deve_deletar_um_customer_salvo_no_sistema() {
+		
+		given()
+		.pathParam("id", CUSTOMER_ID)
+		.when()
+		.delete("customer/{id}")
+		.then()
+		.statusCode(204);
+	}
+
+	@Test
+	public void t14_deve_retornar_status_404_ao_atualizar_um_customer_com_id_nao_salvo_no_sistema() {
+		
+		Map<String, String>customer = new HashMap<>();
+		customer.put("birthDate","2022-01-10");
+		customer.put("lastName","COSTUMER_LAST_NAME");
+		customer.put("name","COSTUMER_FIRST_NAME");
+		given()
+		.pathParam("id", CUSTOMER_ID)
+		.when()
+		.body(customer)
+		.put("customer/{id}")
+		.then()
+		.statusCode(404);
+	}
+	
+	@Test
+	public void t15_deve_retornar_status_404_ao_deletar_um_customer_com_id_nao_salvo_no_sistema() {
+		given()
+		.pathParam("id", CUSTOMER_ID)
+		.when()
+		.delete("customer/{id}")
+		.then()
+		.statusCode(404);
+	}
+	
+	
+}

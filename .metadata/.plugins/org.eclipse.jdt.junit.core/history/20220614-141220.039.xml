@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CustomerResourceTest" project="qa-test" tests="10" started="10" failures="1" errors="0" ignored="0">
+  <testsuite name="br.com.southrocklab.resources.CustomerResourceTest" time="2.159">
+    <testcase name="deve_retornar_status_404_quando_buscar_customer_por_name_e_last_name_inexistente" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.37"/>
+    <testcase name="testeHam" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.01">
+      <failure>java.lang.AssertionError: 
+Expected: is "Maria"
+     but: was "maria"&#13;
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)&#13;
+	at org.junit.Assert.assertThat(Assert.java:956)&#13;
+	at org.junit.Assert.assertThat(Assert.java:923)&#13;
+	at br.com.southrocklab.resources.CustomerResourceTest.testeHam(CustomerResourceTest.java:44)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)&#13;
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)&#13;
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)&#13;
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)&#13;
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)&#13;
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)&#13;
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+&#13;
+</failure>
+    </testcase>
+    <testcase name="deve_atualizar_o_last_name_de_um_customer" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.002"/>
+    <testcase name="deve_retornar_status_404_ao_deletar_um_customer_com_id_nao_salvo_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.002"/>
+    <testcase name="deve_salvar_novo_customer_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="1.761"/>
+    <testcase name="deve_retornar_status_404_ao_atualizar_um_customer_com_id_nao_salvo_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.002"/>
+    <testcase name="deve_deletar_um_customer_salvo_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.001"/>
+    <testcase name="deve_retornar_status_400_quando_salvar_customer_com_birth_date_maior_que_hoje" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.002"/>
+    <testcase name="deve_retornar_status_400_quando_salvar_customer_ja_salvo" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.002"/>
+    <testcase name="deve_procurar_customer_pelo_name_e_last_name" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.002"/>
+  </testsuite>
+</testrun>

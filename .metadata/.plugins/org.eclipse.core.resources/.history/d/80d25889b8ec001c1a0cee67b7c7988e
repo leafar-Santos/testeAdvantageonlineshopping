@@ -1,0 +1,26 @@
+package br.com.southrocklab.utils;
+
+import java.util.Random;
+
+public class NumbersUtils {
+
+	
+	
+
+		
+		public static int numeroAleatorio(int i, int j){
+
+		    Random rand = new Random();
+		    int randomNum = rand.nextInt((j + i) + 1) + i;
+
+		    return randomNum;
+		}
+		
+		
+
+		public static void main(String[] args) {
+			 System.out.println(numeroAleatorio(0000000000000000,0000032457766655));
+	}
+	
+		
+}

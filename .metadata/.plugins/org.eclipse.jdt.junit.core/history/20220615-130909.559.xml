@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Suite" project="qa-test" tests="24" started="24" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.southrocklab.suite.Suite" time="3.38">
+    <testsuite name="br.com.southrocklab.resources.CustomerResourceTest" time="2.878">
+      <testcase name="t01_deve_salvar_novo_customer_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="1.976"/>
+      <testcase name="t02_deve_validar_Todos_campos_obrigatorios" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.105"/>
+      <testcase name="t03_deve_validar_campo_birthDate_obrigatorio" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.038"/>
+      <testcase name="t04_deve_validar_campo_last_name_obrigatorio" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.049"/>
+      <testcase name="t05_deve_validar_campo_name_obrigatorio" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.051"/>
+      <testcase name="t06_deve_retornar_status_400_quando_salvar_customer_ja_salvo" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.047"/>
+      <testcase name="t07_deve_retornar_status_400_quando_salvar_customer_com_birth_date_maior_que_hoje" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.038"/>
+      <testcase name="t08_deve_procurar_customer_pelo_name_e_last_name" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.122"/>
+      <testcase name="t09_deve_retornar_status_404_quando_buscar_customer_por_last_name_inexistente" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.079"/>
+      <testcase name="t10_deve_retornar_status_404_quando_buscar_customer_por_nome_inexistente" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.06"/>
+      <testcase name="t11_deve_retornar_status_404_quando_buscar_customer_name_e_last_name_inexistente" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.033"/>
+      <testcase name="t12_deve_atualizar_o_last_name_de_um_customer" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.105"/>
+      <testcase name="t13_deve_atualizar_o_fisrt_name_de_um_customer" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.069"/>
+      <testcase name="t14_deve_deletar_um_customer_salvo_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.053"/>
+      <testcase name="t15_deve_retornar_status_404_ao_atualizar_um_customer_com_id_nao_salvo_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.024"/>
+      <testcase name="t16_deve_retornar_status_404_ao_deletar_um_customer_com_id_nao_salvo_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.028"/>
+    </testsuite>
+    <testsuite name="br.com.southrocklab.resources.CardResourceTest" time="0.498">
+      <testcase name="t_01_deve_ValidarCamposObrigatorios" classname="br.com.southrocklab.resources.CardResourceTest" time="0.12"/>
+      <testcase name="t_01_deve_salvar_novo_card_no_sistema" classname="br.com.southrocklab.resources.CardResourceTest" time="0.133"/>
+      <testcase name="t_02_deve_retornar_status_400_quando_salvar_card_com_cvv_maior_que_999" classname="br.com.southrocklab.resources.CardResourceTest" time="0.071"/>
+      <testcase name="t_03_deve_retornar_status_400_quando_salvar_card_com_expiration_month_maior_que_12" classname="br.com.southrocklab.resources.CardResourceTest" time="0.035"/>
+      <testcase name="t_03_deve_retornar_status_400_quando_salvar_card_com_expiration_year_menor_que_2022" classname="br.com.southrocklab.resources.CardResourceTest" time="0.043"/>
+      <testcase name="t_04_deve_retornar_status_400_quando_salvar_card_com_number_de_15_digitos" classname="br.com.southrocklab.resources.CardResourceTest" time="0.032"/>
+      <testcase name="t_05_deve_deletar_um_card_salvo_no_sistema" classname="br.com.southrocklab.resources.CardResourceTest" time="0.02"/>
+      <testcase name="t_06_deve_retornar_status_404_ao_deletar_um_card_com_id_nao_salvo_no_sistema" classname="br.com.southrocklab.resources.CardResourceTest" time="0.043"/>
+    </testsuite>
+  </testsuite>
+</testrun>

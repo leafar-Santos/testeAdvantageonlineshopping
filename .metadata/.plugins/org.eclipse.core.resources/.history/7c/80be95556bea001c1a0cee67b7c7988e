@@ -1,0 +1,113 @@
+package Cadastro;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import dsl.DSL;
+
+public class Cadastro {
+
+	
+	/*
+	@Test
+	public void Cadastro() {
+	 
+	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Rafael\\Documents\\TesteFuncionalAdvantageOlineShopping\\TesteFuncionalAdvantageShopping\\src\\test\\resources\\chromedriver.exe");
+	
+	WebDriver driver = new ChromeDriver();
+	driver.get("https://advantageonlineshopping.com/#/");
+	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	driver.findElement(By.id("menuUser")).click();
+	driver.quit();
+}
+	*/
+	
+	private WebDriver driver;
+	private DSL dsl;
+
+	@Before
+	public void iniciliza() {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Rafael\\Documents\\TesteFuncionalAdvantageOlineShopping\\TesteFuncionalAdvantageShopping\\src\\test\\resources\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.get("https://advantageonlineshopping.com/#/");
+		dsl = new DSL(driver);
+		
+	}
+	
+	@After
+	public void finaliaza() {
+		driver.quit();
+	}
+	
+	public void waitPage(int tempo) {
+		driver.manage().timeouts().implicitlyWait(tempo, TimeUnit.SECONDS);
+	}
+	
+	@Test
+	public void clicaCadastro() {
+	waitPage(5000);
+	driver.findElement(By.id("menuUser")).click();
+	driver.findElement(By.linkText("CREATE NEW ACCOUNT")).click();
+
+}
+	
+	@Test
+	public void clicaCadastroCompleto() {
+	waitPage(2000);
+	driver.findElement(By.id("menuUser")).click();
+	
+	
+	try {
+		Thread.sleep(5000);
+	} catch (InterruptedException e) {
+		e.printStackTrace();
+	}
+	driver.findElement(By.linkText("CREATE NEW ACCOUNT")).click();
+	System.out.println(driver.getWindowHandles());
+	driver.switchTo().window((String) driver.getWindowHandles().toArray()[0]);
+	
+	
+	dsl.escreveByName("usernameRegisterPage", "Raaul91");
+	Assert.assertEquals("Raaul91",dsl.obterValorCampoByname("usernameRegisterPage"));
+	
+	dsl.escreveByName("emailRegisterPage","leafar@gmail.com");
+	dsl.escreveByName("passwordRegisterPage", "b1107C@rol");
+	dsl.escreveByName("emailRegisterPage","leafar@gmail.com");
+	dsl.escreveByName("passwordRegisterPage", "b1107C@rol");
+	dsl.escreveByName("confirm_passwordRegisterPage","Rafael");
+	dsl.escreveByName("last_nameRegisterPage", "Santos");
+	dsl.escreveByName("phone_numberRegisterPage", "11987654321");
+	dsl.escreveByName("cityRegisterPage", "São Paulo");
+	dsl.escreveByName("addressRegisterPage", "Rua 01");
+	dsl.escreveByName("state_/_province_/_regionRegisterPage","São Paulo");
+	dsl.escreveByName("postal_codeRegisterPage","02987090");
+
+    
+    /*
+    driver.findElement(By.name("countryListboxRegisterPage")).click();
+    
+
+    {
+      WebElement dropdown = driver.findElement(By.name("countryListboxRegisterPage"));
+      dropdown.findElement(By.xpath("//option[. = 'Brazil']")).click();
+    }
+    
+    */
+
+	dsl.clicaByName("i_agree");
+	dsl.clicaByid("register_btnundefined");
+ 
+}
+	
+	
+}

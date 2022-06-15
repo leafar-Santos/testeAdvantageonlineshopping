@@ -1,0 +1,13 @@
+package br.com.southrocklab.utils;
+
+public class NumbersUtils {
+
+	
+	public static void main(String[] args) {
+		int numeroInteiroAleatorio_0_a_10 = random.nextInt(10);
+	    System.out.println("Número inteiro aleatório de 0 até 10:);
+	}
+	
+
+	
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun br.com.southrocklab.resources.CardResourceTest" project="qa-test" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.southrocklab.resources.CardResourceTest" time="2.4">
+    <testcase name="t_01_deve_salvar_novo_card_no_sistema" classname="br.com.southrocklab.resources.CardResourceTest" time="2.065"/>
+    <testcase name="t_02_deve_retornar_status_400_quando_salvar_card_com_cvv_maior_que_999" classname="br.com.southrocklab.resources.CardResourceTest" time="0.052"/>
+    <testcase name="t_03_deve_retornar_status_400_quando_salvar_card_com_expiration_month_maior_que_12" classname="br.com.southrocklab.resources.CardResourceTest" time="0.074"/>
+    <testcase name="t_03_deve_retornar_status_400_quando_salvar_card_com_expiration_year_menor_que_2022" classname="br.com.southrocklab.resources.CardResourceTest" time="0.046"/>
+    <testcase name="t_04_deve_retornar_status_400_quando_salvar_card_com_number_de_15_digitos" classname="br.com.southrocklab.resources.CardResourceTest" time="0.036"/>
+    <testcase name="t_05_deve_deletar_um_card_salvo_no_sistema" classname="br.com.southrocklab.resources.CardResourceTest" time="0.089"/>
+    <testcase name="t_06_deve_retornar_status_404_ao_deletar_um_card_com_id_nao_salvo_no_sistema" classname="br.com.southrocklab.resources.CardResourceTest" time="0.038"/>
+  </testsuite>
+</testrun>

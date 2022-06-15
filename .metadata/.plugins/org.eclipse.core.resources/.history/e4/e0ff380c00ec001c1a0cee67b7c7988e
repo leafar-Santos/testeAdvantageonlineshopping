@@ -1,0 +1,41 @@
+package br.com.southrocklab.resources;
+
+import static io.restassured.RestAssured.basePath;
+import static io.restassured.RestAssured.baseURI;
+import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.port;
+import static org.hamcrest.Matchers.is;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import br.com.southrocklab.ApplicationTests;
+import br.com.southrocklab.testes.BaseTest;
+
+public class testeDoido extends BaseTest {
+	
+
+	@BeforeClass
+	public static void setup() {
+		
+		baseURI = "http://localhost";
+		port = 9090;
+		basePath = "/customer";
+	}
+	
+	@Test
+	public void deve_salvar_novo_customer_no_sistema() {
+		
+	given()
+	.log().all()
+	.when()
+	.get("Rafael/Santos")
+	.then()
+	.statusCode(200)
+	.body("name",is("Rafael"));
+
+	}
+	
+	
+
+}

@@ -1,0 +1,162 @@
+package br.com.southrocklab.resources;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import br.com.southrocklab.model.CardTest;
+import br.com.southrocklab.testes.BaseTest;
+import br.com.southrocklab.utils.DataUtils;
+import br.com.southrocklab.utils.NumbersUtils;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class CardResourceTest extends BaseTest {
+
+
+	 private static String HOLDER_NAME = "Rafael" + NumbersUtils.numeroNome();
+	 private static String BRAND = "MASTER";
+	 private static Integer CUSTOMER_ID = 1;
+	 private static String CUSTOMER_CVC = NumbersUtils.numeroCVC();
+	 private static String CUSTOMER_YEAR = DataUtils.getYear(1);
+	 private static String CUSTOMER_YEAR_INFERIOR = DataUtils.getYear(-5);
+	 private static String CUSTOMER_MONTH = DataUtils.getMonth(1);
+	 private static String NUMBER_CARD = NumbersUtils.numeroCartao();
+	 private static String NUMBER_CARD_PEQUENO = NumbersUtils.numeroCartaoQuinzeDigitos();
+	 private static int CARD_ID;
+	
+	 private static String MES = "13";
+
+	 
+	 CardTest card = new CardTest();
+	 
+    @Test
+    public void t_01_deve_salvar_novo_card_no_sistema() {
+    	
+    	
+    	card.setBrand(BRAND);
+    	card.setCustomerId(CUSTOMER_ID);
+    	card.setCvc(CUSTOMER_CVC);
+    	card.setExpirationYear(CUSTOMER_YEAR);
+    	card.setExpirationMoth(CUSTOMER_MONTH);
+    	card.setHolderName(HOLDER_NAME);
+    	card.setNumber(NUMBER_CARD);
+    	
+    	CARD_ID =
+     	given()
+		.when()
+		.body(card)
+		
+		.post("/card")
+		.then()
+		.statusCode(200)
+     	.body("customerId",is(CUSTOMER_ID))
+		.body("number", is(NUMBER_CARD))
+		.body("holderName", is(HOLDER_NAME))
+		.body("brand", is(BRAND))
+	    .body("expirationMoth",is(notNullValue()))
+		.body("expirationYear",is(notNullValue()))
+		.body("cvc",is(CUSTOMER_CVC))
+		.body("id", is(notNullValue()))
+    	.extract().path("id");
+  
+    }
+    
+    
+    @Test
+    public void t_02_deve_retornar_status_400_quando_salvar_card_com_cvv_maior_que_999() {
+    	
+    	card.setBrand(BRAND);
+    	card.setCustomerId(CUSTOMER_ID);
+    	card.setCvc("1000");
+    	card.setExpirationYear(CUSTOMER_YEAR);
+    	card.setExpirationMoth(CUSTOMER_MONTH);
+    	card.setHolderName(HOLDER_NAME);
+    	card.setNumber(NUMBER_CARD);
+     	given()
+		.when()
+		.body(card)
+		
+		.post("/card")
+		.then()
+		.statusCode(400)
+		.body("cvc",is("cvc must be between 001 to 999"));
+    }
+    
+
+    @Test
+    public void t_03_deve_retornar_status_400_quando_salvar_card_com_expiration_month_maior_que_12() {
+    	
+    	card.setBrand(BRAND);
+    	card.setCustomerId(CUSTOMER_ID);
+    	card.setCvc(CUSTOMER_CVC);
+    	card.setExpirationYear(CUSTOMER_YEAR);
+    	card.setExpirationMoth(MES);
+    	card.setHolderName(HOLDER_NAME);
+    	card.setNumber(NUMBER_CARD);
+     	given()
+		.when()
+		.body(card)
+		.post("/card")
+		.then()
+		.statusCode(400)
+	    .body("expirationMoth",is("Expiration month must be less then 12"));
+    }
+
+    @Test
+    public void t_03_deve_retornar_status_400_quando_salvar_card_com_expiration_year_menor_que_2022() {
+    	
+    	card.setBrand(BRAND);
+    	card.setCustomerId(CUSTOMER_ID);
+    	card.setCvc(CUSTOMER_CVC);
+    	card.setExpirationYear(CUSTOMER_YEAR_INFERIOR);
+    	card.setExpirationMoth(CUSTOMER_MONTH);
+    	card.setHolderName(HOLDER_NAME);
+    	card.setNumber(NUMBER_CARD);
+     	given()
+		.when()
+		.body(card)
+		.post("/card")
+		.then()
+		.statusCode(400)
+		.body("expirationYear",is( "Expiration year must be greater than the current one"));
+    }
+    
+    @Test
+    public void t_04_deve_retornar_status_400_quando_salvar_card_com_number_de_15_digitos() {
+    	card.setBrand(BRAND);
+    	card.setCustomerId(CUSTOMER_ID);
+    	card.setCvc(CUSTOMER_CVC);
+    	card.setExpirationYear(CUSTOMER_YEAR);
+    	card.setExpirationMoth(CUSTOMER_MONTH);
+    	card.setHolderName(HOLDER_NAME);
+    	card.setNumber(NUMBER_CARD_PEQUENO);
+     	given()
+		.when()
+		.body(card)
+		.post("/card")
+		.then()
+		.statusCode(400)
+		.body("number", is("Number must have a 16 numbers"));
+    }
+
+    @Test
+    public void t_05_deve_deletar_um_card_salvo_no_sistema() {
+    	
+     	given()
+     	.pathParam("id",CARD_ID)
+		.when()
+		.body(card)
+		.delete("/card/{id}")
+		.then()
+		.statusCode(204);  
+     	}
+
+    @Test
+    public void t_06_deve_retornar_status_404_ao_deletar_um_card_com_id_nao_salvo_no_sistema() {
+    	
+    }
+}

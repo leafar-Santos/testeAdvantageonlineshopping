@@ -1,0 +1,30 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+
+import dsl.DSL;
+
+public class ExcluirContaPage {
+
+private DSL dsl;
+	
+	public ExcluirContaPage(WebDriver driver) {
+		dsl = new DSL(driver);
+	}
+	
+	public void clicaBotaoUsuario() {
+		dsl.clicaByid("sign_in_btnundefined");
+	}
+	
+	public void clicaBotaoMyAccount() {
+		
+	}
+	
+	public void clicaBotaoDeleteAccount(){
+		
+	}
+	
+public void clicaConfirmDelete(){
+		
+	}
+}

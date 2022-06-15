@@ -1,0 +1,12 @@
+package br.com.southrocklab.utils;
+
+import java.util.Calendar;
+
+public class DateUtils {
+
+	public static String getDataDiferecaDias(Integer qntAnos) {
+		Calendar cal = Calendar.getInstance();
+		
+	}
+	
+}

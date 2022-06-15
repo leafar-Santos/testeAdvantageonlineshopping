@@ -1,0 +1,156 @@
+package br.com.southrocklab.resources;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.is;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.junit.Test;
+
+import br.com.southrocklab.testes.BaseTest;
+
+
+public class CustomerResourceTest extends BaseTest {
+	
+	public Map<String, String> dados_customer() {
+	
+	
+	
+	Map<String, String>customer = new HashMap<>();
+	customer.put("birthDate","2022-01-10");
+	customer.put("lastName","Santos");
+	customer.put("name","Gerúndioo");
+	return customer;
+	}
+	
+	
+	@Test
+	public void deve_salvar_novo_customer_no_sistema() {
+	
+	given()
+	.when()
+	.body(dados_customer())
+	.post("/customer")
+	.then()
+	.statusCode(200)
+	.body("name",is("Gerúndioo"));
+
+	}
+	
+	@Test
+	public void deve_retornar_status_400_quando_salvar_customer_ja_salvo() {
+		
+		Map<String, String>customer = new HashMap<>();
+		customer.put("birthDate","2022-01-10");
+		customer.put("lastName","Santos");
+		customer.put("name","Jossé");
+		given()
+		.when()
+		.body(customer)
+		.post("/customer")
+		.then()
+		.statusCode(400);
+	
+	}
+
+	@Test
+	public void deve_retornar_status_400_quando_salvar_customer_com_birth_date_maior_que_hoje() {
+		
+		Map<String, String>customer = new HashMap<>();
+		customer.put("birthDate","2022-10-10");
+		customer.put("lastName","Santos");
+		customer.put("name","Jossé");
+		given()
+		.when()
+		.body(customer)
+		.post("/customer")
+		.then()
+		.statusCode(400)
+		.body("birthDate", is("Birth date must be smaller than today"));
+	}
+
+	
+	@Test
+	public void deve_procurar_customer_pelo_name_e_last_name() {
+		given()
+		.when()
+		.get("customer/Rafael/Santos")
+		.then()
+		.statusCode(200)
+		.body("name", is("Rafael"))
+		.body("lastName", is("Santos"))
+		.body("birthDate", is("2022-01-10"));
+	}
+
+	/*
+
+	{
+	    "name": "Rafael",
+	    "lastName": "Santos",
+	    "birthDate": "2022-01-10",
+	    "id": 1,
+	    "cards": [
+	        {
+	            "customerId": 1,
+	            "number": "1234567893216549",
+	            "holderName": "Teste01",
+	            "brand": "MASTER",
+	            "expirationMoth": 7,
+	            "expirationYear": 2905,
+	            "cvc": "321",
+	            "id": 2
+	        }
+	    ]
+	}
+	
+	*/
+	@Test
+	public void deve_retornar_status_404_quando_buscar_customer_por_name_e_last_name_inexistente() {
+		
+		given()
+		.when()
+		.get("customer/Rafael/Alencar")
+		.then()
+		.statusCode(404)
+		.body("message", is("Customer not found"));
+	}
+
+	@Test
+	public void deve_retornar_status_404_quando_buscar_customer_inexistente() {
+		
+		given()
+		.when()
+		.get("customer/Caroline/Santos")
+		.then()
+		.statusCode(404)
+		.body("message", is("Customer not found"));
+	}
+
+	@Test
+	public void deve_retornar_status_404_quando_buscar_customer_last_name_inexistente() {
+		
+		given()
+		.when()
+		.get("customer/Rafael/Ben10")
+		.then()
+		.statusCode(404)
+		.body("message", is("Customer not found"));
+	}
+	
+	@Test
+	public void deve_atualizar_o_last_name_de_um_customer() {
+	}
+
+	@Test
+	public void deve_retornar_status_404_ao_atualizar_um_customer_com_id_nao_salvo_no_sistema() {
+	}
+
+	@Test
+	public void deve_deletar_um_customer_salvo_no_sistema() {
+	}
+
+	@Test
+	public void deve_retornar_status_404_ao_deletar_um_customer_com_id_nao_salvo_no_sistema() {
+	}
+}

@@ -1,0 +1,50 @@
+package br.com.southrocklab.resources;
+
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.junit.Test;
+
+import br.com.southrocklab.testes.BaseTest;
+
+public class testeDoido extends BaseTest {
+	
+	
+	@Test
+	public void TesteDoido() {
+	given()
+	.log().all()
+	.when()
+	.get("Rafael/Santos")
+	.then()
+	.statusCode(200)
+	.body("name",is("Rafael"));
+
+	}
+	
+	
+	@Test
+	public void TesteDoidoo() {
+		
+		
+	Map<String, String>customer = new HashMap<>();
+	customer.put("birthDate","2022-01-10");
+	customer.put("lastName","Santos");
+	customer.put("name","Luiz");
+	given()
+
+	.when()
+	.post("customer")
+	.then()
+	.statusCode(200)
+	.body("name",is("Raphael"));
+
+	}
+	
+	
+	
+
+}

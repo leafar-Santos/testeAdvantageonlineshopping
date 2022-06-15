@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun br.com.southrocklab.resources.CardResourceTest" project="qa-test" tests="8" started="8" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.southrocklab.resources.CardResourceTest" time="2.48">
+    <testcase name="t_01_deve_salvar_novo_card_no_sistema" classname="br.com.southrocklab.resources.CardResourceTest" time="2.009"/>
+    <testcase name="t_02_deve_ValidarCamposObrigatorios" classname="br.com.southrocklab.resources.CardResourceTest" time="0.137"/>
+    <testcase name="t_03_deve_retornar_status_400_quando_salvar_card_com_cvv_maior_que_999" classname="br.com.southrocklab.resources.CardResourceTest" time="0.083"/>
+    <testcase name="t_04_deve_retornar_status_400_quando_salvar_card_com_expiration_month_maior_que_12" classname="br.com.southrocklab.resources.CardResourceTest" time="0.06"/>
+    <testcase name="t_05_deve_retornar_status_400_quando_salvar_card_com_expiration_year_menor_que_2022" classname="br.com.southrocklab.resources.CardResourceTest" time="0.055"/>
+    <testcase name="t_06_deve_retornar_status_400_quando_salvar_card_com_number_de_15_digitos" classname="br.com.southrocklab.resources.CardResourceTest" time="0.041"/>
+    <testcase name="t_07_deve_deletar_um_card_salvo_no_sistema" classname="br.com.southrocklab.resources.CardResourceTest" time="0.045"/>
+    <testcase name="t_08_deve_retornar_status_404_ao_deletar_um_card_com_id_nao_salvo_no_sistema" classname="br.com.southrocklab.resources.CardResourceTest" time="0.049"/>
+  </testsuite>
+</testrun>

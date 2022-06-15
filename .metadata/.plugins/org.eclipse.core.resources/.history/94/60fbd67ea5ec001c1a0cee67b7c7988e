@@ -1,0 +1,54 @@
+package br.com.southrocklab.resources;
+
+import org.junit.Test;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.hamcrest.Matchers;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import br.com.southrocklab.testes.BaseTest;
+import br.com.southrocklab.utils.DataUtils;
+import br.com.southrocklab.testes.BaseTest;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class CardResourceTest extends BaseTest {
+
+    @Test
+    public void deve_salvar_novo_card_no_sistema() {
+    	
+    	public Card card = new Card();
+    	
+    }
+
+    @Test
+    public void deve_retornar_status_400_quando_salvar_card_com_cvv_maior_que_999() {
+    }
+
+    @Test
+    public void deve_retornar_status_400_quando_salvar_card_com_expiration_month_maior_que_12() {
+    }
+
+    @Test
+    public void deve_retornar_status_400_quando_salvar_card_com_expiration_year_menor_que_2022() {
+    }
+    
+
+    @Test
+    public void deve_retornar_status_400_quando_salvar_card_com_number_de_15_digitos() {
+    }
+
+    @Test
+    public void deve_deletar_um_card_salvo_no_sistema() {
+    }
+
+    @Test
+    public void deve_retornar_status_404_ao_deletar_um_card_com_id_nao_salvo_no_sistema() {
+    }
+}

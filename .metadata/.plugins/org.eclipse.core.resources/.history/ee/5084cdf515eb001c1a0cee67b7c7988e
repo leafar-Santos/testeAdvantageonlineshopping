@@ -1,0 +1,58 @@
+package cadastro;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import dsl.DSL;
+import pages.CadastroPage;
+import until.DriverFactory;
+
+public class LoginTeste {
+
+	
+	private DSL dsl;
+	private CadastroPage page;
+	DriverFactory facDriver;
+	private CadastroPage pagina;
+
+	@Before
+	public void iniciliza() {
+		DriverFactory.getDriver();
+		dsl = new DSL(DriverFactory.getDriver());
+		page = new CadastroPage(DriverFactory.getDriver());
+	}
+
+	@After
+	public void finaliaza() {
+		DriverFactory.killDriver();
+	}
+
+	public void waitPage(int tempo) {
+		facDriver.getDriver().manage().timeouts().implicitlyWait(tempo, TimeUnit.SECONDS);
+	}
+
+	@Test
+	public void clicaCadastroCompleto() {
+		waitPage(2000);
+		dsl.clicaByid("menuUser");
+
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		dsl.clicaByLink("CREATE NEW ACCOUNT");
+		dsl.mudaPagina(0);
+
+		page.setUserName("Raaul92");
+		Assert.assertEquals("Raaul92", page.ObterUserNome());
+		
+	}
+	
+
+}

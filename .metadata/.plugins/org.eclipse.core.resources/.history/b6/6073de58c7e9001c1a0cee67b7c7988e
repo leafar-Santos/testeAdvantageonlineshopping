@@ -1,0 +1,48 @@
+package Cadastro;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Cadastro {
+
+/*
+	@Test
+	public void teste() {
+	 
+	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Rafael\\Documents\\TesteFuncionalAdvantageOlineShopping\\TesteFuncionalAdvantageShopping\\src\\test\\resources\\chromedriver.exe");
+	
+	WebDriver driver = new ChromeDriver();
+	driver.get("https://advantageonlineshopping.com/#/");
+	System.out.println(driver.getTitle());
+	Assert.assertEquals("Advantage Shopping", driver.getTitle());
+	driver.quit();
+}
+	*/
+	@SuppressWarnings("deprecation")
+	@After
+
+	
+	@Test
+	public void Cadastro() throws InterruptedException {
+	 
+	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Rafael\\Documents\\TesteFuncionalAdvantageOlineShopping\\TesteFuncionalAdvantageShopping\\src\\test\\resources\\chromedriver.exe");
+	
+	WebDriver driver = new ChromeDriver();
+	driver.get("https://advantageonlineshopping.com/#/");
+	driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+	
+	//Thread.sleep(15000);
+	driver.findElement(By.id("id=menuUser")).click();
+	driver.quit();
+}
+	
+	
+}

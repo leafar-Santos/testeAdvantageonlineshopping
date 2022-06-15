@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun br.com.southrocklab.resources.CustomerResourceTest" project="qa-test" tests="9" started="9" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.southrocklab.resources.CustomerResourceTest" time="1.064">
+    <testcase name="deve_retornar_status_404_quando_buscar_customer_por_name_e_last_name_inexistente" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.367"/>
+    <testcase name="deve_atualizar_o_last_name_de_um_customer" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.002"/>
+    <testcase name="deve_retornar_status_404_ao_deletar_um_customer_com_id_nao_salvo_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.002"/>
+    <testcase name="deve_salvar_novo_customer_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.676"/>
+    <testcase name="deve_retornar_status_404_ao_atualizar_um_customer_com_id_nao_salvo_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.002"/>
+    <testcase name="deve_deletar_um_customer_salvo_no_sistema" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.002"/>
+    <testcase name="deve_retornar_status_400_quando_salvar_customer_com_birth_date_maior_que_hoje" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.004"/>
+    <testcase name="deve_retornar_status_400_quando_salvar_customer_ja_salvo" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.003"/>
+    <testcase name="deve_procurar_customer_pelo_name_e_last_name" classname="br.com.southrocklab.resources.CustomerResourceTest" time="0.003"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun br.com.southrocklab.resources.CardResourceTest.deve_salvar_novo_card_no_sistema" project="qa-test" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testcase name="deve_salvar_novo_card_no_sistema" classname="br.com.southrocklab.resources.CardResourceTest" time="1.405"/>
+</testrun>

@@ -1,0 +1,93 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+
+import dsl.DSL;
+
+public class CadastroPage {
+
+	
+	private DSL dsl;
+	
+	public CadastroPage(WebDriver driver) {
+		dsl = new DSL(driver);
+	}
+	
+	
+	public void setUserName(String nome) {
+		dsl.escreveByName("usernameRegisterPage", nome);
+	}
+	
+	public void setUserEmail(String email) {
+		dsl.escreveByName("emailRegisterPage", email);
+	}
+	
+	public void setPassword(String password) {
+		dsl.escreveByName("passwordRegisterPage", password);
+	}
+	
+	
+	public void setConfirmPassword(String password) {
+		dsl.escreveByName("confirm_passwordRegisterPage", password);
+	}
+	
+
+	public void setFirstName(String firstName) {
+		dsl.escreveByName("first_nameRegisterPage", firstName);
+	}
+	
+	
+	
+	public void setLastName(String lastName) {
+		dsl.escreveByName("last_nameRegisterPage", lastName);
+	}
+	
+
+	public void setPhone(String phone) {
+		dsl.escreveByName("phone_numberRegisterPage", phone);
+	}
+	
+
+	public void set() {
+		
+	}
+	
+
+	public void set() {
+		
+	}
+	
+
+	public void set() {
+		
+	}
+	
+
+	public void set() {
+		
+	}
+	
+
+	public void set() {
+		
+	}
+	
+
+	public void set() {
+		
+	}
+	
+
+	public void set() {
+		
+	}
+	
+
+	public void set() {
+		
+	}
+	*/
+	
+
+}
+

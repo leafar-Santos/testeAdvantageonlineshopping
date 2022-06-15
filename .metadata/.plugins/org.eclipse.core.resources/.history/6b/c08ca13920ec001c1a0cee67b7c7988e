@@ -1,0 +1,21 @@
+package br.com.southrocklab.suite;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite.SuiteClasses;
+
+import br.com.southrocklab.resource.CardResource;
+import br.com.southrocklab.resource.CustomerResource;
+import br.com.southrocklab.resources.CardResourceTest;
+import br.com.southrocklab.resources.CustomerResourceTest;
+import br.com.southrocklab.testes.BaseTest;
+
+@RunWith(org.junit.runners.Suite.class)
+@SuiteClasses({
+	CustomerResourceTest.class,
+	CardResourceTest.class
+})
+public class Suite extends BaseTest{
+
+	
+	
+}

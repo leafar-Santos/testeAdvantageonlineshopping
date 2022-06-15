@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun cadastro.LoginTeste" project="TesteFuncionalAdvantageShopping" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="cadastro.LoginTeste" time="14.569">
+    <testcase name="Login" classname="cadastro.LoginTeste" time="14.569"/>
+  </testsuite>
+</testrun>

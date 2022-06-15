@@ -1,0 +1,39 @@
+package br.com.southrocklab.utils;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+public class DataUtils {
+
+	public static String getData(Integer qntAnos) {
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.DAY_OF_MONTH, qntAnos);
+		return getDataFormatada(cal.getTime());
+		//Formatando para String
+			
+	}
+	
+	public static String getDataFormatada(Date data) {
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		return format.format(data);
+		
+	}
+	
+	
+	public static String GetYear(Date data) {
+		
+		DateFormat format = new SimpleDateFormat("yyyy");
+		return format.format(data);
+	}
+	
+	
+	Date data = new Date();
+	Calendar cal = Calendar.getInstance();
+	cal.setTime(data);
+	int day = cal.get(Calendar.DAY_OF_MONTH);
+	int month = cal.get(Calendar.MONTH);
+	int year = cal.get(Calendar.YEAR);
+	
+}

@@ -1,0 +1,16 @@
+package br.com.southrocklab.suite;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite.SuiteClasses;
+
+import br.com.southrocklab.resource.CustomerResource;
+
+@RunWith(org.junit.runners.Suite.class)
+@SuiteClasses({
+	CustomerResource.class
+})
+public class Suite {
+
+	
+	
+}

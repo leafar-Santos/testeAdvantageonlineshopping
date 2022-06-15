@@ -1,0 +1,26 @@
+package br.com.southrocklab.utils;
+
+import java.util.Random;
+
+public class NumbersUtils {
+
+	
+	
+
+		
+		public static Long numeroAleatorio(){
+
+		    Random rand = new Random();
+		    int randomNum = rand.nextInt();
+
+		    return (long) randomNum;
+		}
+		
+		
+
+		public static void main(String[] args) {
+			 System.out.println(numeroAleatorio());
+	}
+	
+		
+}
